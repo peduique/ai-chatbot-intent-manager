@@ -13,11 +13,15 @@ import {
   SIcon,
   SContent,
   SCaption,
+  SExpressionTags,
+  SReplyChip,
 } from "./styles";
+import Chip from "../Chip";
 
 interface IIntent extends IntentProps {
   onChangeStatus: (id: string, checked: boolean) => void;
   isActive: boolean;
+  index: number;
 }
 
 const Intent: FC<IIntent> = ({
@@ -27,15 +31,14 @@ const Intent: FC<IIntent> = ({
   trainingData,
   reply,
   isActive,
+  index,
   onChangeStatus,
 }) => {
-  const [expanded, setExpanded] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(index === 0 ? true : false);
 
   const handleClickExpandAccordion = () => {
     setExpanded((isShown) => !isShown);
   };
-
-  // console.log(id, isActive);
 
   return (
     <SIntent>
@@ -51,12 +54,23 @@ const Intent: FC<IIntent> = ({
           <SDescription>{description}</SDescription>
         </div>
         <SButton onClick={handleClickExpandAccordion}>
-          <SIcon />
+          <SIcon $isActive={expanded} />
         </SButton>
       </SHeader>
       {expanded && (
         <SContent>
-          <SCaption>Expressions</SCaption>
+          <div>
+            <SCaption>Expressions</SCaption>
+            <SExpressionTags>
+              {trainingData.expressions.map(({ id, text: expression }) => (
+                <Chip key={id}>{expression}</Chip>
+              ))}
+            </SExpressionTags>
+          </div>
+          <div>
+            <SCaption>Reply</SCaption>
+            <SReplyChip variant="secondary">{reply.text}</SReplyChip>
+          </div>
         </SContent>
       )}
     </SIntent>

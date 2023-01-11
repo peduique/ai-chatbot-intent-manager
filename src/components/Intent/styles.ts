@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import Button from "../Button";
 
+import Button from "../Button";
 import Typograph from "../Typograph";
+import IconArrowDown from "../../assets/images/icon-arrow-down.svg";
+import Chip from "../Chip";
 
 export const SIntent = styled.div`
   background: #eef0f3;
@@ -30,40 +32,47 @@ export const SButton = styled(Button)`
   border: 0;
   cursor: pointer;
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:focus {
     outline: none;
   }
 `;
 
-export const SIcon = styled.div`
-  width: 12px;
-  height: 12px;
-  transform: rotate(135deg);
+export const SIcon = styled.div(
+  ({ $isActive }: { $isActive: boolean }) => `
+  width: 30px;
+  height: 30px;
+  transition: 0.2s;
+  transform-origin: center;
+  transform: rotate(${$isActive ? "180deg" : "0"});
+  background: url(${IconArrowDown}) center;
+  background-size: 30px;
+`
+);
 
-  &:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    border-width: 3px 3px 0 0;
-    border-style: solid;
-    border-color: #000;
-    display: block;
-  }
-
-  &:after {
-    content: "";
-    float: left;
-    position: relative;
-    top: -100%;
-    width: 100%;
-    height: 100%;
-    border-width: 0 3px 0 0;
-    border-style: solid;
-    border-color: #000;
-  }
+export const SContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 80px;
 `;
 
-export const SContent = styled.div``;
+export const SCaption = styled(Typograph)`
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 5px;
+`;
 
-export const SCaption = styled(Typograph)``;
+export const SExpressionTags = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+`;
+
+export const SReplyChip = styled(Chip)`
+  font-style: italic;
+`;

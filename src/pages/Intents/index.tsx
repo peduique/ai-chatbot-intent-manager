@@ -5,43 +5,32 @@ import IntentsGroup from "../../components/IntentsGroup";
 
 import intents from "../../data/intents.json";
 
-import { IntentProps } from "./types";
 import { SContainer, SDescription, STitle } from "./styles";
 
-const Intents: FC = () => {
+const IntentsPage: FC = () => {
   const [activeIntents, setActiveIntents] = useState<string[]>([]);
 
-  const handleChangeStatus = useCallback(
-    (id: string, checked: boolean) => {
-      if (!checked) {
-        console.log("entrou", id, checked);
-        setActiveIntents((prev) => {
-          const remove = prev.filter((intentId) => intentId !== id);
-          console.log("prev", prev);
-          console.log("remove", remove);
+  const handleChangeStatus = useCallback((id: string, checked: boolean) => {
+    if (!checked) {
+      setActiveIntents((prev) => prev.filter((intentId) => intentId !== id));
+      return;
+    }
 
-          return remove;
-        });
-      }
-
-      setActiveIntents((prev) => [...prev, id]);
-    },
-    [setActiveIntents]
-  );
-
-  console.log("activeIntents", activeIntents);
+    setActiveIntents((prev) => [...prev, id]);
+  }, []);
 
   return (
     <SContainer>
-      <STitle>Intents manager</STitle>
+      <STitle>AI intents manager</STitle>
       <SDescription>{intents.length} pretrained intents</SDescription>
 
       <IntentsGroup>
-        {intents.map((intent) => (
+        {intents.map((intent, index) => (
           <Intent
             key={intent.id}
             isActive={activeIntents.includes(intent.id)}
             onChangeStatus={handleChangeStatus}
+            index={index}
             {...intent}
           />
         ))}
@@ -50,4 +39,4 @@ const Intents: FC = () => {
   );
 };
 
-export default Intents;
+export default IntentsPage;

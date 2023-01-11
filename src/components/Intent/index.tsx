@@ -63,13 +63,22 @@ const Intent: FC<IIntent> = ({
             <SCaption>Expressions</SCaption>
             <SExpressionTags>
               {trainingData.expressions.map(({ id, text: expression }) => (
-                <Chip key={id}>{expression}</Chip>
+                <Chip key={id} alt={expression}>
+                  {expression}
+                </Chip>
               ))}
+              {Boolean(trainingData.expressionCount) && (
+                <Chip onClick={() => {}} alt="Show all expressions">
+                  +{trainingData.expressionCount}
+                </Chip>
+              )}
             </SExpressionTags>
           </div>
           <div>
             <SCaption>Reply</SCaption>
-            <SReplyChip variant="secondary">{reply.text}</SReplyChip>
+            <SReplyChip variant="secondary" alt={reply.text}>
+              {reply.text}
+            </SReplyChip>
           </div>
         </SContent>
       )}

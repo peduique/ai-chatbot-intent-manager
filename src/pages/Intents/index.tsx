@@ -1,11 +1,11 @@
-import React, { FC, useCallback, useState } from "react";
+import React, { FC } from "react";
 
 import Button from "../../components/Button";
 import Intent from "../../components/Intent";
 import IntentsGroup from "../../components/IntentsGroup";
 import Loading from "../../components/Loading/Index";
 
-import intents from "../../data/intents.json";
+import useIntentManager from "../../hooks/useIntentManager";
 
 import {
   SContainer,
@@ -17,38 +17,14 @@ import {
 } from "./styles";
 
 const IntentsPage: FC = () => {
-  const [activeIntents, setActiveIntents] = useState<string[]>([]);
-  const [isUpdating, setUpdating] = useState<boolean>(false);
-
-  const allIntentsActive = activeIntents.length === intents.length;
-
-  const handleLoadingEffect = () => {
-    setUpdating(true);
-
-    setInterval(() => setUpdating(false), 4000);
-  };
-
-  const handleChangeStatus = useCallback((id: string, checked: boolean) => {
-    handleLoadingEffect();
-
-    if (!checked) {
-      setActiveIntents((prev) => prev.filter((intentId) => intentId !== id));
-      return;
-    }
-
-    setActiveIntents((prev) => [...prev, id]);
-  }, []);
-
-  const handleAllIntents = () => {
-    handleLoadingEffect();
-
-    if (allIntentsActive) {
-      setActiveIntents([]);
-      return;
-    }
-
-    setActiveIntents(intents.map(({ id }) => id));
-  };
+  const {
+    intents,
+    activeIntents,
+    isUpdating,
+    allIntentsActive,
+    handleAllIntents,
+    handleChangeStatus,
+  } = useIntentManager();
 
   return (
     <SContainer>

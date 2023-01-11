@@ -51,4 +51,19 @@ describe("AI intents manager", () => {
           .should("exist");
       });
   });
+
+  it.only("should be able to expand an intent on clicking the arrow", () => {
+    const [, second] = intents;
+
+    cy.get('[data-testid="intent"]')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="intent-arrow"]').click();
+
+        return cy
+          .get('[data-testid="intent-reply"]')
+          .contains(second.reply.text)
+          .should("exist");
+      });
+  });
 });

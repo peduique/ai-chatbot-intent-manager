@@ -41,6 +41,8 @@ const Intent: FC<IIntent> = ({
     setExpanded((isShown) => !isShown);
   };
 
+  console.log(id, isActive);
+
   return (
     <SIntent>
       <SHeader>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, memo, useState } from "react";
 
 import SwitchButton from "../SwitchButton";
 
@@ -15,35 +15,36 @@ import {
   SCaption,
 } from "./styles";
 
-interface IIntent extends IntentProps {}
+interface IIntent extends IntentProps {
+  onChangeStatus: (id: string, checked: boolean) => void;
+  isActive: boolean;
+}
 
-const Intent: React.FC<IIntent> = ({
+const Intent: FC<IIntent> = ({
   id,
   name,
   description,
   trainingData,
   reply,
+  isActive,
+  onChangeStatus,
 }) => {
-  const [active, setActive] = useState<boolean>(false);
   const [expanded, setExpanded] = useState<boolean>(false);
 
   const handleClickExpandAccordion = () => {
     setExpanded((isShown) => !isShown);
   };
 
-  const handleClickActiveIntent = (status: boolean) => {
-    setActive((isShown) => !isShown);
-  };
-
-  console.log(active);
+  // console.log(id, isActive);
 
   return (
     <SIntent>
       <SHeader>
         <SwitchButton
           id={`switch-${id}`}
-          active={active}
-          onClick={handleClickActiveIntent}
+          name={id}
+          active={isActive}
+          onChange={onChangeStatus}
         />
         <div>
           <STitle as="h2">{name}</STitle>
@@ -62,4 +63,4 @@ const Intent: React.FC<IIntent> = ({
   );
 };
 
-export default Intent;
+export default memo(Intent);

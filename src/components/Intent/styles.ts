@@ -5,13 +5,13 @@ import Typograph from "../Typograph";
 
 export const SIntent = styled.div`
   background: #eef0f3;
-  padding: 40px;
+  padding: 20px 40px;
   border-radius: 16px;
 `;
 
 export const STitle = styled(Typograph)`
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
 `;
 
 export const SDescription = styled(Typograph)`

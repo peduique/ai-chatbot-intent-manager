@@ -3,25 +3,27 @@ import React, { ChangeEvent, FC } from "react";
 import { SWrapper, SCheckbox, SLabel } from "./styles";
 
 interface ISwitchButton {
-  id: string;
+  id?: string;
+  name: string;
   active: boolean;
-  onClick: (status: boolean) => void;
+  onChange: (name: string, checked: boolean) => void;
 }
 
-const SwitchButton: FC<ISwitchButton> = ({ id, active, onClick }) => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onClick(event.target.checked);
+const SwitchButton: FC<ISwitchButton> = ({ id, name, active, onChange }) => {
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    onChange(target.name, target.checked);
   };
 
   return (
     <SWrapper>
       <SCheckbox
         type="checkbox"
-        id={id}
+        name={name}
+        id={id ?? name}
         checked={active}
         onChange={handleChange}
       />
-      <SLabel htmlFor={id} />
+      <SLabel htmlFor={id ?? name} />
     </SWrapper>
   );
 };

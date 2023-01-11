@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 import Button from "../Button";
 import Typograph from "../Typograph";
-import IconArrowDown from "../../assets/images/icon-arrow-down.svg";
 import Chip from "../Chip";
+
+import IconArrowDown from "../../assets/images/icon-arrow-down.svg";
+import IconEdit from "../../assets/images/icon-edit.svg";
 
 export const SIntent = styled.div`
   background: #eef0f3;
@@ -56,6 +58,7 @@ export const SIcon = styled.div(
 export const SContent = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 20px;
   padding-left: 80px;
 `;
@@ -75,4 +78,14 @@ export const SExpressionTags = styled.div`
 
 export const SReplyChip = styled(Chip)`
   font-style: italic;
+`;
+
+export const SCustomizeButton = styled(Button)`
+  padding: 0 0 0 30px;
+  display: inline-flex;
+  margin-top: 20px;
+  color: #2288e7;
+  background: url(${IconEdit}) left center;
+  background-size: 20px;
+  background-repeat: no-repeat;
 `;

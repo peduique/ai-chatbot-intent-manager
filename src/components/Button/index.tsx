@@ -4,9 +4,9 @@ import { SButton } from "./styles";
 
 interface IButton {
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
-  variant?: string;
+  variant?: "primary" | "transparent";
 }
 
 const Button: FC<IButton> = ({

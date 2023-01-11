@@ -1,6 +1,7 @@
 import React, { FC, memo, useState } from "react";
 
 import SwitchButton from "../SwitchButton";
+import Chip from "../Chip";
 
 import { IntentProps } from "../../pages/Intents/types";
 
@@ -15,8 +16,8 @@ import {
   SCaption,
   SExpressionTags,
   SReplyChip,
+  SCustomizeButton,
 } from "./styles";
-import Chip from "../Chip";
 
 interface IIntent extends IntentProps {
   onChangeStatus: (id: string, checked: boolean) => void;
@@ -59,6 +60,10 @@ const Intent: FC<IIntent> = ({
       </SHeader>
       {expanded && (
         <SContent>
+          <SCustomizeButton disabled variant="transparent">
+            Customize intent
+          </SCustomizeButton>
+
           <div>
             <SCaption>Expressions</SCaption>
             <SExpressionTags>
@@ -74,6 +79,7 @@ const Intent: FC<IIntent> = ({
               )}
             </SExpressionTags>
           </div>
+
           <div>
             <SCaption>Reply</SCaption>
             <SReplyChip variant="secondary" alt={reply.text}>

@@ -17,7 +17,7 @@ const Intents: FC = () => {
 
       <IntentsGroup>
         {intents.map((intent) => (
-          <Intent {...intent} />
+          <Intent key={intent.id} {...intent} />
         ))}
       </IntentsGroup>
     </SContainer>

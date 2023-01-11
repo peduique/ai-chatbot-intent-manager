@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import SwitchButton from "../SwitchButton";
+
 import { IntentProps } from "../../pages/Intents/types";
 
 import {
@@ -23,19 +25,35 @@ const Intent: React.FC<IIntent> = ({
   reply,
 }) => {
   const [active, setActive] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(false);
+
+  const handleClickExpandAccordion = () => {
+    setExpanded((isShown) => !isShown);
+  };
+
+  const handleClickActiveIntent = (status: boolean) => {
+    setActive((isShown) => !isShown);
+  };
+
+  console.log(active);
 
   return (
     <SIntent>
       <SHeader>
+        <SwitchButton
+          id={`switch-${id}`}
+          active={active}
+          onClick={handleClickActiveIntent}
+        />
         <div>
           <STitle as="h2">{name}</STitle>
           <SDescription>{description}</SDescription>
         </div>
-        <SButton>
+        <SButton onClick={handleClickExpandAccordion}>
           <SIcon />
         </SButton>
       </SHeader>
-      {active && (
+      {expanded && (
         <SContent>
           <SCaption>Expressions</SCaption>
         </SContent>

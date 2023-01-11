@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "../Button";
 
 import Typograph from "../Typograph";
 
@@ -20,14 +21,15 @@ export const SDescription = styled(Typograph)`
 
 export const SHeader = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 30px;
 `;
 
-export const SButton = styled.button`
+export const SButton = styled(Button)`
   background: transparent;
   border: 0;
   cursor: pointer;
+  margin-left: auto;
 
   &:focus {
     outline: none;

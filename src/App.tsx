@@ -1,13 +1,13 @@
-import Header from "./components/Header";
+import { useState } from "react";
 
-import intents from "./data/intents.json";
+import Header from "./components/Header";
+import Intents from "./pages/Intents";
 
 const App = () => {
-  console.log(intents);
-
   return (
     <div className="App">
       <Header />
+      <Intents />
     </div>
   );
 };

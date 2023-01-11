@@ -1,9 +1,9 @@
 import React from "react";
 
-// import { Container } from './styles';
+import { SHeader } from "./styles";
 
 const Header: React.FC = () => {
-  return <div>Header</div>;
+  return <SHeader>Ultimate.</SHeader>;
 };
 
 export default Header;

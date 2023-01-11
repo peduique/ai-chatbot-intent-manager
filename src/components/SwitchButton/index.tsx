@@ -7,6 +7,7 @@ interface ISwitchButton {
   name: string;
   active: boolean;
   onChange: (name: string, checked: boolean) => void;
+  testId?: string;
 }
 
 const SwitchButton: FC<ISwitchButton> = ({
@@ -28,6 +29,7 @@ const SwitchButton: FC<ISwitchButton> = ({
         id={id ?? name}
         checked={active}
         onChange={handleChange}
+        data-testid={rest.testId}
       />
       <SLabel htmlFor={id ?? name} />
     </SWrapper>

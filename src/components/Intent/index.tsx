@@ -42,13 +42,14 @@ const Intent: FC<IIntent> = ({
   };
 
   return (
-    <SIntent>
+    <SIntent data-testid="intent">
       <SHeader>
         <SSwitchButton
           id={`switch-${id}`}
           name={id}
           active={isActive}
           onChange={onChangeStatus}
+          testId="intent-checkbox"
         />
         <div>
           <STitle as="h2">{name}</STitle>
@@ -66,7 +67,7 @@ const Intent: FC<IIntent> = ({
 
           <div>
             <SCaption>Expressions</SCaption>
-            <SExpressionTags>
+            <SExpressionTags data-testid="intent-expressions">
               {trainingData.expressions.map(({ id, text: expression }) => (
                 <Chip key={id} alt={expression}>
                   {expression}
@@ -82,7 +83,11 @@ const Intent: FC<IIntent> = ({
 
           <div>
             <SCaption>Reply</SCaption>
-            <SReplyChip variant="secondary" alt={reply.text}>
+            <SReplyChip
+              variant="secondary"
+              alt={reply.text}
+              data-testid="intent-reply"
+            >
               {reply.text}
             </SReplyChip>
           </div>

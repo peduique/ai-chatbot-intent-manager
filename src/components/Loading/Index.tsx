@@ -6,9 +6,9 @@ interface Iloading {
   text?: string | null;
 }
 
-const Loading: FC<Iloading> = ({ text = null }) => {
+const Loading: FC<Iloading> = ({ text = null, ...rest }) => {
   return (
-    <SLoading>
+    <SLoading {...rest}>
       <SIcon />
       {text}
     </SLoading>

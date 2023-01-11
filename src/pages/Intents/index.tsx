@@ -55,12 +55,12 @@ const IntentsPage: FC = () => {
     <SContainer>
       <SHeader>
         <div>
-          <STitle>AI intents manager</STitle>
+          <STitle data-testid="page-title">AI intents manager</STitle>
           <SDescription>{intents.length} pretrained intents</SDescription>
         </div>
 
         <SControl>
-          {isUpdating && <Loading text="Saving..." />}
+          {isUpdating && <Loading text="Saving..." data-testid="loading" />}
           <Button disabled>+ Add custom intetion</Button>
         </SControl>
       </SHeader>
@@ -70,6 +70,7 @@ const IntentsPage: FC = () => {
           name="toggle-all-intents"
           onChange={handleAllIntents}
           active={allIntentsActive}
+          testId="toggle-all-intents"
         />
         {allIntentsActive ? "Unselect" : "Select"} all intents
       </SAllIntentsSwitch>

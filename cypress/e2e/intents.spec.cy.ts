@@ -15,14 +15,10 @@ describe("AI intents manager", () => {
   });
 
   it("should successfully toggle all intents", () => {
-    cy.get('[data-testid="toggle-all-intents"]')
-      .should("not.be.checked")
-      .check({ force: true });
+    cy.get('[data-testid="toggle-all-intents"]').click();
     cy.get('[data-testid="intent-checkbox"]').should("be.checked");
 
-    cy.get('[data-testid="toggle-all-intents"]')
-      .should("be.checked")
-      .uncheck({ force: true });
+    cy.get('[data-testid="toggle-all-intents"]').click();
     cy.get('[data-testid="intent-checkbox"]').should("not.be.checked");
   });
 
@@ -52,7 +48,7 @@ describe("AI intents manager", () => {
       });
   });
 
-  it.only("should be able to expand an intent on clicking the arrow", () => {
+  it("should be able to expand an intent on clicking the arrow", () => {
     const [, second] = intents;
 
     cy.get('[data-testid="intent"]')

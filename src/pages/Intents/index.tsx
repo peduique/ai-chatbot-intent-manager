@@ -67,6 +67,7 @@ const IntentsPage: FC = () => {
       <SAllIntentsButton
         onClick={handleAllIntents}
         variant={allIntentsActive ? "secondary" : "secondaryOutline"}
+        data-testid="toggle-all-intents"
       >
         {allIntentsActive ? "Unselect" : "Select"} all intents
       </SAllIntentsButton>

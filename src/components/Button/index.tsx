@@ -6,7 +6,12 @@ interface IButton {
   children: ReactNode;
   onClick?: () => void;
   disabled?: boolean;
-  variant?: "primary" | "transparent";
+  variant?:
+    | "primary"
+    | "primaryOutline"
+    | "secondary"
+    | "secondaryOutline"
+    | "transparent";
 }
 
 const Button: FC<IButton> = ({

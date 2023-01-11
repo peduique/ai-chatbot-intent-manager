@@ -4,7 +4,6 @@ import Button from "../../components/Button";
 import Intent from "../../components/Intent";
 import IntentsGroup from "../../components/IntentsGroup";
 import Loading from "../../components/Loading/Index";
-import SwitchButton from "../../components/SwitchButton";
 
 import intents from "../../data/intents.json";
 
@@ -14,7 +13,7 @@ import {
   SDescription,
   STitle,
   SControl,
-  SAllIntentsSwitch,
+  SAllIntentsButton,
 } from "./styles";
 
 const IntentsPage: FC = () => {
@@ -40,15 +39,15 @@ const IntentsPage: FC = () => {
     setActiveIntents((prev) => [...prev, id]);
   }, []);
 
-  const handleAllIntents = (_: string, checked: boolean) => {
+  const handleAllIntents = () => {
     handleLoadingEffect();
 
-    if (checked) {
-      setActiveIntents(intents.map(({ id }) => id));
+    if (allIntentsActive) {
+      setActiveIntents([]);
       return;
     }
 
-    setActiveIntents([]);
+    setActiveIntents(intents.map(({ id }) => id));
   };
 
   return (
@@ -65,15 +64,12 @@ const IntentsPage: FC = () => {
         </SControl>
       </SHeader>
 
-      <SAllIntentsSwitch>
-        <SwitchButton
-          name="toggle-all-intents"
-          onChange={handleAllIntents}
-          active={allIntentsActive}
-          testId="toggle-all-intents"
-        />
+      <SAllIntentsButton
+        onClick={handleAllIntents}
+        variant={allIntentsActive ? "secondary" : "secondaryOutline"}
+      >
         {allIntentsActive ? "Unselect" : "Select"} all intents
-      </SAllIntentsSwitch>
+      </SAllIntentsButton>
 
       <IntentsGroup>
         {intents.map((intent, index) => (

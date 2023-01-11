@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import Button from "../../components/Button";
 import Typograph from "../../components/Typograph";
 
 export const SContainer = styled.div`
@@ -50,8 +51,10 @@ export const SControl = styled.div`
   }
 `;
 
-export const SAllIntentsSwitch = styled.div`
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+export const SAllIntentsButton = styled(Button)`
+  padding: 7px 10px;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-bottom: 20px;
+  font-weight: bold;
 `;

@@ -49,3 +49,9 @@ export const SControl = styled.div`
     align-items: flex-start;
   }
 `;
+
+export const SAllIntentsSwitch = styled.div`
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+`;

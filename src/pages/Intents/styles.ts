@@ -3,13 +3,21 @@ import styled from "styled-components";
 import Typograph from "../../components/Typograph";
 
 export const SContainer = styled.div`
-  margin: 40px 20px;
+  margin: 40px 30px;
+
+  @media (max-width: 767px) {
+    margin: 25px;
+  }
 `;
 
 export const STitle = styled(Typograph)`
   font-size: 40px;
   font-weight: 500;
   margin: 0;
+
+  @media (max-width: 767px) {
+    font-size: 25px;
+  }
 `;
 
 export const SDescription = styled(Typograph)`
@@ -22,6 +30,12 @@ export const SHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 `;
 
 export const SControl = styled.div`
@@ -29,4 +43,9 @@ export const SControl = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+
+  @media (max-width: 767px) {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
 `;

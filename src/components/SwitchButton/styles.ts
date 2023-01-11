@@ -4,6 +4,11 @@ export const SWrapper = styled.div`
   position: relative;
   width: 50px;
   height: 24px;
+
+  @media (max-width: 767px) {
+    width: 40px;
+    height: 20px;
+  }
 `;
 
 export const SLabel = styled.label`
@@ -25,6 +30,11 @@ export const SLabel = styled.label`
     margin: 2px;
     background: #717276;
     transition: 0.2s;
+
+    @media (max-width: 767px) {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
@@ -40,6 +50,10 @@ export const SCheckbox = styled.input`
       margin-left: 28px;
       transition: 0.2s;
       background: #6b54af;
+
+      @media (max-width: 767px) {
+        margin-left: 22px;
+      }
     }
   }
 `;

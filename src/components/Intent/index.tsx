@@ -1,6 +1,5 @@
 import React, { FC, memo, useState } from "react";
 
-import SwitchButton from "../SwitchButton";
 import Chip from "../Chip";
 
 import { IntentProps } from "../../pages/Intents/types";
@@ -17,6 +16,7 @@ import {
   SExpressionTags,
   SReplyChip,
   SCustomizeButton,
+  SSwitchButton,
 } from "./styles";
 
 interface IIntent extends IntentProps {
@@ -41,12 +41,10 @@ const Intent: FC<IIntent> = ({
     setExpanded((isShown) => !isShown);
   };
 
-  console.log(id, isActive);
-
   return (
     <SIntent>
       <SHeader>
-        <SwitchButton
+        <SSwitchButton
           id={`switch-${id}`}
           name={id}
           active={isActive}

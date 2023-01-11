@@ -14,5 +14,12 @@ export const STitle = styled(Typograph)`
 
 export const SDescription = styled(Typograph)`
   font-size: 16px;
-  margin: 10px 0 30px;
+  margin: 10px 0 0;
+`;
+
+export const SHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 `;

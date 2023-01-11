@@ -53,7 +53,7 @@ const Intent: FC<IIntent> = ({
           <STitle as="h2">{name}</STitle>
           <SDescription>{description}</SDescription>
         </div>
-        <SButton onClick={handleClickExpandAccordion}>
+        <SButton onClick={handleClickExpandAccordion} variant="transparent">
           <SIcon $isActive={expanded} />
         </SButton>
       </SHeader>

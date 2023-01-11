@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-type Theme = {
+type TChipTheme = {
   [key: string]: {
     color: string;
     background: string;
@@ -8,7 +8,7 @@ type Theme = {
   };
 };
 
-const themes: Theme = {
+const themes: TChipTheme = {
   primary: {
     color: "#575656",
     background: "transparent",
@@ -22,7 +22,7 @@ const themes: Theme = {
 };
 
 export const SChip = styled.div(({ $variant }: { $variant: string }) => {
-  const theme = themes[$variant as keyof Theme];
+  const theme = themes[$variant as keyof TChipTheme];
 
   return {
     padding: "5px 10px",

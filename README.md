@@ -29,10 +29,19 @@ Start the server
   yarn dev
 ```
 
+Access the link
+
+```bash
+  http://127.0.0.1:5173/
+```
+
 ## Running Tests
 
-To run tests, run the following command
+To run unit and end to end tests, run the following commands:
 
+```bash
+  yarn test
+```
 ```bash
   yarn cypress run
 ```

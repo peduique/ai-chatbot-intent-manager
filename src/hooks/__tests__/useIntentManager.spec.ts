@@ -5,7 +5,7 @@ import useIntentManager from "../useIntentManager";
 import intents from "../../data/intents.json";
 
 describe("useIntentManager", () => {
-  it("should work", () => {
+  it("should be able to handle events and return custom data from hook", () => {
     const { result } = renderHook(() => useIntentManager());
 
     // initial asserts
